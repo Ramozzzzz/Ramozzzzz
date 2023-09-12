@@ -1,8 +1,11 @@
+package com.Words;
 
 import java.io.*;
 import java.util.*;
 
-class GetTXT {
+import static com.Words.WordsCut.*;
+
+class txtOperation {
     private static List<String> Read(String path) throws IOException {
         List<String> article=new ArrayList<String>();
         File read=new File(path);
@@ -18,6 +21,6 @@ class GetTXT {
 
     public static void main(String[] args) throws IOException {
         String path="F:\\program\\c\\software\\txt\\orig.txt";
-        System.out.println(Read(path));
+        System.out.println(splitWords(String.valueOf(Read(path))));
     }
 }
