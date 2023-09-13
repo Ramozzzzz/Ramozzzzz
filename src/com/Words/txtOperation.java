@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import static com.Words.WordsCut.*;
 
-class txtOperation {
-    private static List<String> Read(String path) throws IOException {
+public class txtOperation {
+    public static List<String> Read(String path) throws IOException {
         List<String> article=new ArrayList<String>();
         File read=new File(path);
         InputStreamReader reader = new InputStreamReader(new FileInputStream(read));
@@ -20,11 +20,13 @@ class txtOperation {
         return article;
     }
 
-
-
-    public static void main(String[] args) throws IOException {
-//        String path="F:\\program\\c\\software\\txt\\orig.txt";
-//        System.out.println(splitWords(String.valueOf(Read(path))));
-
+    private static int[] Counter(List<String> split_article,List<String> merge){
+        int number[]=new int[merge.size()];
+        for(int i=0;i< merge.size();i++){
+            number[i]=Collections.frequency(split_article, merge.get(i));
+        }
+        return number;
     }
+
+
 }

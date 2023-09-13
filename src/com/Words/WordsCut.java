@@ -7,13 +7,13 @@ import java.util.stream.Stream;
 
 
 public class WordsCut {
-    static List<String> splitWords(String s1){
+    public static List<String> splitWords(String s1){
         Stream<String> s2=HanLP.segment(s1).stream().map(str->str.word);
         return s2.filter(s->!"`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？ "
                 .contains(s)).toList();
     }
 
-    private static List<String> Merge(List<String> s1,List<String> s2){
+    static List<String> Merge(List<String> s1,List<String> s2){
         List<String> str1=new ArrayList<>();
         List<String> str2=new ArrayList<>();
         str1.addAll(s1);
