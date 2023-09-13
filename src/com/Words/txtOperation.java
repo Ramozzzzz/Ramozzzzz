@@ -20,7 +20,14 @@ public class txtOperation {
         return article;
     }
 
-    private static int[] Counter(List<String> split_article,List<String> merge){
+    public static void Write(String path,float result) throws IOException {
+        FileWriter write=new FileWriter(path);
+        write.write(String.valueOf(result));
+        write.flush();
+        write.close();
+    }
+
+    public static int[] Counter(List<String> split_article,List<String> merge){
         int number[]=new int[merge.size()];
         for(int i=0;i< merge.size();i++){
             number[i]=Collections.frequency(split_article, merge.get(i));
