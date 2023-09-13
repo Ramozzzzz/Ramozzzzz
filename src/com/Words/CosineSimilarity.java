@@ -1,7 +1,7 @@
 package com.Words;
 
 public class CosineSimilarity {
-    static float getSimilarity(int[] number1,int[] number2){
+    public static float getSimilarity(int[] number1,int[] number2){
         float square1=0,square2=0,product=0;
         for(int i=0;i<number1.length;i++){
             product+=number1[i]*number2[i];
