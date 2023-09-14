@@ -41,7 +41,7 @@ public class main {
         int[] n2 = Counter(article2,article3);
         //输出结果
         System.out.print("两篇文章的相似度为：");
-        System.out.println(getSimilarity(n1,n2));
+        System.out.println(String.format("%.2f", getSimilarity(n1,n2)));
         Write(path3,getSimilarity(n1,n2));
     }
 
