@@ -19,7 +19,7 @@ public class WordsCutTest extends WordsCut {
     }
 
     @Test
-    public void testMerge() {
+    public void testmerge() {
         String t1="这是第一个字符串";
         List<String>s1=splitWords(t1);
         String t2="This is the second string";
