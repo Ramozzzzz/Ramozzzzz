@@ -1,19 +1,16 @@
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
+
 import java.util.*;
 
 public class PostfixExpression {
 
     public static int getPriority(String str) {
-        int result = 0;
-        switch (str) {
-            case "+", "-":
-                result = 1;
-                break;
-            case "*", "/":
-                result = 2;
-                break;
-        }
-        return result;
+        return switch (str) {
+            case "+", "-" -> 1;
+            case "*" -> 2;
+            case "/" -> 3;
+            case "'" -> 4;
+            default -> 0;
+        };
     }
 
     public static List<String> toList(String str) {
@@ -24,20 +21,17 @@ public class PostfixExpression {
     }
 
     public static boolean isOperator(String str) {
-        boolean b = false;
-        if (str.compareTo("+") == 0 || str.compareTo("-") == 0
+        return str.compareTo("+") == 0 || str.compareTo("-") == 0
                 || str.compareTo("*") == 0 || str.compareTo("/") == 0 ||
-                    str.compareTo("(") == 0 || str.compareTo(")") == 0)
-            b = true;
-        return b;
+                str.compareTo("(") == 0 || str.compareTo(")") == 0;
     }
 
     public static List<String> postfixChange(String fix){
-        List<String> infix=toList(fix);
         Stack<String> s1=new Stack<>();
         List<String> s2=new ArrayList<>();
+        List<String> infix=toList(fix);
         int size=infix.size();
-        int priority=0;
+        int priority;
         int i=0;
         while(i<size){
             if(isOperator(infix.get(i))){
@@ -50,8 +44,10 @@ public class PostfixExpression {
                     while(s1.peek().compareTo("(")!=0){
                         s2.add(s1.pop());
                     }
-                    s1.pop();
-                    s2.add(s1.pop());
+                    if(Objects.equals(s1.peek(), "("))
+                        s1.pop();
+                    if(!s1.isEmpty())
+                        s2.add(s1.pop());
                     i++;
                     continue;
                 }
@@ -60,18 +56,17 @@ public class PostfixExpression {
                     s1.push(infix.get(i));
                 }
                 else{
-                    while (priority <= getPriority(s1.peek()) && !s1.isEmpty())
+                    while (!s1.isEmpty() && priority <= getPriority(s1.peek()))
                     {
                         s2.add(s1.pop());
                     }
                     s1.push(infix.get(i));
                 }
-                i++;
             }
             else{
                 s2.add(infix.get(i));
-                i++;
             }
+            i++;
         }
         while (!s1.isEmpty()) {
             s2.add(s1.pop());
