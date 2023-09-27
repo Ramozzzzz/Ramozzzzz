@@ -7,8 +7,8 @@ public class OperationsCreate {//算式生成类
         Random random=new Random();
         List<String> op=new ArrayList<>();
         int t;
-        String operation=" ";
-        String symbol[]={" "," "," "};//一个算式最多包含三个符号
+        String operation;
+        String[] symbol ={" "," "," "};//一个算式最多包含三个符号
         for(int i=0;i<n;i++){
             t= random.nextInt(4);//根据随机数的结果选择生成何种算式
             if(t<2){//随机数结果小于2，生成只包含整数的算式
@@ -64,7 +64,7 @@ public class OperationsCreate {//算式生成类
                     //生成包含"'"、两个分数和一个符号的算式
                     operation = (random.nextInt(r)+1) + " " + symbol[0] + " " +
                             (random.nextInt(r)+1) + " " + symbol[1] + " " + (random.nextInt(r)+1) + " ' " +
-                            + (random.nextInt(r)+1)+ " " +  symbol[2] + " " + (random.nextInt(r)+1);
+                            (random.nextInt(r)+1)+ " " +  symbol[2] + " " + (random.nextInt(r)+1);
 
             }
             op.add(operation);

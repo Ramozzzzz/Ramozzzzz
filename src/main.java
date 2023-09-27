@@ -5,8 +5,8 @@ import java.util.List;
 
 public class main {
     public static void main(String[] args) throws IOException {
-        int n = 0,r = 0;
-        String pathe=" ",patha=" ";
+        int n ,r;
+        String pathe,patha=" ";
         List<String> commands = new ArrayList<>(Arrays.asList(args));
         List<String> answers=new ArrayList<>();
         List<String> op=new ArrayList<>();
@@ -20,11 +20,11 @@ public class main {
             patha=commands.get(commands.indexOf("-a")+1);
             op=txtOperation.Read(pathe);
         }
-        String str=" ";
-        for(int i=0;i< op.size();i++){//计算
-            str=op.get(i);
-            if(str.contains("/"))
-                answers.add(String.valueOf(Calculator.fractionCalculator(PostfixExpression.postfixChange(str))));
+        String str;
+        for (String s : op) {//计算
+            str = s;
+            if (str.contains("/"))
+                answers.add(Calculator.fractionCalculator(PostfixExpression.postfixChange(str)));
             else
                 answers.add(String.valueOf(Calculator.integerCalculator(PostfixExpression.postfixChange(str))));
         }
