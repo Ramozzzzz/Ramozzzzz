@@ -34,13 +34,11 @@ public class Calculator extends Fraction{//计算类继承自分数类
     public static int integerCalculator(List<String> equation){//整数计算
         Stack<String> s1=new Stack<>();
         int result=0;
-        int size=equation.size();
-        for(int i=0;i<size;i++){
-            if(!PostfixExpression.isOperator(equation.get(i))){
-                s1.push(equation.get(i));//逐个扫描字符，若为数字则直接入栈
-            }
-            else{//若为符号则弹出两个数字与当前符号进行运算，并将结果入栈
-                result=Calculate(s1.pop(),s1.pop(),equation.get(i));
+        for (String s : equation) {
+            if (!PostfixExpression.isOperator(s)) {
+                s1.push(s);//逐个扫描字符，若为数字则直接入栈
+            } else {//若为符号则弹出两个数字与当前符号进行运算，并将结果入栈
+                result = Calculate(s1.pop(), s1.pop(), s);
                 s1.push(String.valueOf(result));
             }
         }
