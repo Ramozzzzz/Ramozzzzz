@@ -10,7 +10,7 @@ public class main {
         List<String> commands = new ArrayList<>(Arrays.asList(args));
         List<String> answers=new ArrayList<>();
         List<String> op=new ArrayList<>();
-        if(commands.contains("-n") && commands.contains("-r")){
+        if(commands.contains("-n") && commands.contains("-r")){//分析命令行参数
             n=Integer.parseInt(commands.get(commands.indexOf("-n")+1));
             r=Integer.parseInt(commands.get(commands.indexOf("-r")+1));
             op=OperationsCreate.operationsCreate(n, r);
@@ -21,7 +21,7 @@ public class main {
             op=txtOperation.Read(pathe);
         }
         String str=" ";
-        for(int i=0;i< op.size();i++){
+        for(int i=0;i< op.size();i++){//计算
             str=op.get(i);
             if(str.contains("/"))
                 answers.add(String.valueOf(Calculator.fractionCalculator(PostfixExpression.postfixChange(str))));
@@ -31,7 +31,7 @@ public class main {
         if(commands.contains("-e") || commands.contains("-a")){
             txtOperation.answersMatch(answers,patha);
         }
-        else{
+        else{//写入文件
             txtOperation.writeOperations(op);
             txtOperation.writeAnswers(answers);
         }
