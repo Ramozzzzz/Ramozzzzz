@@ -1,7 +1,8 @@
+package Operations;
 //分数类
 public class Fraction {
-    int denominator;//分母
-    int numerator;//分子
+    public int denominator;//分母
+    public int numerator;//分子
 
     public Fraction(){
     }
@@ -11,7 +12,7 @@ public class Fraction {
     }
 
     //获得分子与分母的最大公约数
-    public int getGCD(int n,int d){
+    private int getGCD(int n,int d){
         if (n % d == 0) {
             return d;
         }
@@ -19,7 +20,7 @@ public class Fraction {
     }
 
     //化简分子分母
-    public void toSimplify(){
+    private void toSimplify(){
         int gcd = getGCD(numerator, denominator);
         numerator /= gcd;
         denominator /= gcd;
