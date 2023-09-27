@@ -1,3 +1,4 @@
+package Operations;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class txtOperation {
         write.close();
     }
 
-    public static void writeGrade(int[] id,int length) throws IOException {
+    private static void writeGrade(int[] id,int length) throws IOException {
         FileWriter write=new FileWriter("Grade.txt");
         //将结果写入到当前目录中
         int size= id.length;
